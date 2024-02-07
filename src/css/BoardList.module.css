@@ -1,0 +1,71 @@
+.boardMain {
+    width : 1000px;
+    height : 600px;
+    margin : 0 auto;
+}
+.writeBtn {
+    display: block;
+    margin-top : 30px;
+    margin-bottom : 20px;
+    text-align: right;
+}
+.writeBtn button {
+    width : 70px;
+    height : 30px;
+    border-radius: 8px !important;
+    cursor : pointer;
+    transition : 0.4s;
+    color :cadetblue;
+    background-color: rightgray;
+    font-weight: bold;
+    border : none;
+}
+.writeBtn button:hover {
+    background-color: antiquewhite;
+    color : gray;
+    transition : 0.4s;
+}
+.boardList {
+    display: block;
+    width : 100%;
+    height : 500px;
+    margin : 0 auto;
+
+}
+.list_ {
+    border-top : 1px solid gray;
+    border-bottom : 1px solid gray;
+    padding : 5px;
+}
+.seq {
+    display : inline-block;
+    width : 12%;
+    text-align : center;
+}
+.title {
+    display : inline-block;
+    width : 44%;
+    text-align : center;
+    cursor : pointer;
+}
+.id {
+    display : inline-block;
+    width : 12%;
+    text-align : center;
+}
+.logTime {
+    display : inline-block;
+    width : 20%;
+    text-align : center;
+}
+.hit {
+    display : inline-block;
+    width : 12%;
+    text-align : center;
+}
+
+.list:hover {
+    background-color : cadetblue;
+    color : whitesmoke;
+    transition : 0.4s;
+}

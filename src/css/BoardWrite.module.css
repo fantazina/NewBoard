@@ -1,0 +1,29 @@
+.write_main {
+    border: 1px solid red;
+    max-width: 890px;
+    height : 690px;
+    margin : 0 auto;
+    width : 100%;
+}
+.title_main {
+    display: inline-block;
+}
+.writer {
+    display: inline-block;
+}
+.button_div {
+    display: inline-block;
+}
+.contents {
+    border : 1px solid blue;
+    width : 890px;
+    height : 620px;
+}
+.textarea {
+    width : 800px;
+    height : 580px;
+    margin-top : 20px;
+    margin-left: 40px;
+    resize : none;
+    outline : none;
+}

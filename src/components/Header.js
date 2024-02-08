@@ -4,7 +4,7 @@ import Hstyels from '../css/Header.module.css';
 const Header = () => {
     return (
         <div className={ Hstyels.headerMain }>
-            <h1>지나의 개발 일기</h1>
+            <h1>지나의 게시판</h1>
         </div>
     );
 };

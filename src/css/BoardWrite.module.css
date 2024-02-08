@@ -11,6 +11,9 @@
 .writer {
     display: inline-block;
 }
+.pwd {
+    display: inline-block;
+}
 .button_div {
     display: inline-block;
 }

@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../css/BoardList.module.css';
+import axios from 'axios';
 
-const BoardList = ({onBoardPg}) => {
+const BoardList = ({onBoardPg, onBoardSeq}) => {
+    const[boardList, setBoardList] = useState([])
+    
 
+    useEffect(() => {
+        axios.get(`http://localhost:8080/board/getBoardList`)
+             .then(res => {
+                console.log(res.data)
+                setBoardList(res.data)
+             })
+    },[])
+
+    const getToday = (logTime) => {
+        const date = new Date(logTime)
+        const day = date.getDate();
+        const month = date.getMonth()+1;
+        const hour = date.getHours();
+        const minutes = date.getMinutes();
+        
+        return `${month.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} 
+        ${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    }
+
+    const onBoardView = (num) => {
+        onBoardSeq(num)
+        onBoardPg(2)
+    } 
 
     return (
         <div className={ styles.boardMain }>
@@ -19,16 +45,16 @@ const BoardList = ({onBoardPg}) => {
                     </div>
                 
                     <div>
-                        {/* {
-                            list.map((item, index) => 
-                                <div onClick={ () => onView(item.writeSeq) } className={ styles.list }>
-                                    <span className={ styles.seq }>{item.writeSeq}</span>
-                                    <span className={ styles.title }>[{item.sel}]{item.title}</span>
-                                    <span className={ styles.id }>{item.id}</span>
+                        {
+                            boardList.map((item, index) => 
+                                <div className={ styles.list } onClick={ () => onBoardView(item.boardSeq) }>
+                                    <span className={ styles.seq }>{item.boardSeq}</span>
+                                    <span className={ styles.title }>{item.title}</span>
+                                    <span className={ styles.id }>{item.writer}</span>
                                     <span className={ styles.logTime }>{getToday(item.logTime)}</span>
                                     <span className={ styles.hit }>{item.hit}</span>
                                 </div>)
-                        } */}
+                        }
                     </div>
                 </div>
         </div>

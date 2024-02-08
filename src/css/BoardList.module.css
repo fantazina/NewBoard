@@ -65,7 +65,7 @@
 }
 
 .list:hover {
-    background-color : cadetblue;
-    color : whitesmoke;
+    background-color : antiquewhite;
+    color : gray;
     transition : 0.4s;
 }

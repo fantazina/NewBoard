@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/BoardList.module.css';
+import styles from '../../css/BoardList.module.css';
 import axios from 'axios';
 
-const BoardList = ({onBoardPg, onBoardSeq}) => {
+const BoardList2 = ({onBoardSeq, onBoardPg}) => {
     const[boardList, setBoardList] = useState([])
-    
+
     useEffect(() => {
         axios.get(`http://localhost:8080/board/getBoardList`)
              .then(res => {
@@ -26,7 +26,7 @@ const BoardList = ({onBoardPg, onBoardSeq}) => {
     const onBoardView = (num) => {
         onBoardSeq(num)
         onBoardPg(2)
-    } 
+    }
 
     return (
         <div className={ styles.boardMain }>
@@ -45,7 +45,7 @@ const BoardList = ({onBoardPg, onBoardSeq}) => {
                     <div>
                         {
                             boardList.map((item, index) => 
-                                <div className={ styles.list } onClick={ () => onBoardView(item.boardSeq) }>
+                                <div className={ styles.list } onClick={ () => onBoardView(item.boardSeq) } >
                                     <span className={ styles.seq }>{item.boardSeq}</span>
                                     <span className={ styles.title }>{item.title}</span>
                                     <span className={ styles.id }>{item.writer}</span>
@@ -59,4 +59,4 @@ const BoardList = ({onBoardPg, onBoardSeq}) => {
     );
 };
 
-export default BoardList;
+export default BoardList2;

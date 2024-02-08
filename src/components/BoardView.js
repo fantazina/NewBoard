@@ -5,6 +5,13 @@ import Vstyles from '../css/BoardView.module.css';
 const BoardView = ({ boardSeq, onBoardPg }) => {
     const[boardDTO, setBoardDTO] = useState()
 
+    useEffect(() => {
+        axios.get(`http://localhost:8080/board/getView/${boardSeq}`)
+             .then(res => {
+                setBoardDTO(res.data)
+             })
+    },[])
+
     ////날짜변환기////
     const getToday = (logTime) => {
         const date = new Date(logTime)
@@ -16,6 +23,7 @@ const BoardView = ({ boardSeq, onBoardPg }) => {
         return `${month.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} 
         ${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     }
+    ////////////////
 
     const onEditClick = () => {
         const confirmation = window.prompt('수정하려면 비밀번호를 입력하세요:')
@@ -32,7 +40,7 @@ const BoardView = ({ boardSeq, onBoardPg }) => {
         const confirmation = window.prompt('삭제하려면 비밀번호를 입력하세요:')
         if(confirmation === boardDTO.password) {
             axios.delete(`http://localhost:8080/board/delete/${boardSeq}`)   
-                .then( res => {
+                .then(res => {
                     setBoardDTO(res.data)
                     alert('삭제 완료!')
 
@@ -45,13 +53,6 @@ const BoardView = ({ boardSeq, onBoardPg }) => {
 
         }
     }
-    ////////////////
-    useEffect(() => {
-        axios.get(`http://localhost:8080/board/getView/${boardSeq}`)
-             .then(res => {
-                setBoardDTO(res.data)
-             })
-    },[])
 
     return (
         <div className={ Vstyles.view_container }>  

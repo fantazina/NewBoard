@@ -10,7 +10,7 @@ const BoardView = ({ boardSeq, onBoardPg }) => {
              .then(res => {
                 setBoardDTO(res.data)
              })
-    },[])
+    },[boardSeq])
 
     ////날짜변환기////
     const getToday = (logTime) => {
@@ -40,8 +40,7 @@ const BoardView = ({ boardSeq, onBoardPg }) => {
         const confirmation = window.prompt('삭제하려면 비밀번호를 입력하세요:')
         if(confirmation === boardDTO.password) {
             axios.delete(`http://localhost:8080/board/delete/${boardSeq}`)   
-                .then(res => {
-                    setBoardDTO(res.data)
+                .then(() => {
                     alert('삭제 완료!')
 
                     onBoardPg(0)

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from '../../css/BoardList.module.css';
 import axios from 'axios';
 
-const BoardList3 = ({onBoardPg, onBoardSeq}) => {
+const BoardList4 = ({onBoardPg, onBoardSeq}) => {
     const[boardList, setBoardList] = useState([])
 
     useEffect(() => {
         axios.get(`http://localhost:8080/board/getBoardList`)
              .then(res => {
                 setBoardList(res.data)
-             })  
+             })
     },[])
 
     const getToday = (logTime) => {
@@ -24,10 +24,10 @@ const BoardList3 = ({onBoardPg, onBoardSeq}) => {
     }
 
     const onBoardView = (num) => {
-        onBoardSeq(num)
+        onBoardSeq(num)    
         onBoardPg(2)
     }
-    
+
     return (
         <div className={ styles.boardMain }>
             <div className={ styles.writeBtn }>
@@ -45,14 +45,14 @@ const BoardList3 = ({onBoardPg, onBoardSeq}) => {
                     <div>
                         {
                             boardList.map((item, index) => 
-                                <div className={ styles.list } onClick={ () => onBoardView(item.boardSeq) }>
+                                <div className={ styles.list } onClick={ () => onBoardView(item.boardSeq) } >
                                     <span className={ styles.seq }>{item.boardSeq}</span>
                                     <span className={ styles.title }>{item.title}</span>
                                     <span className={ styles.id }>{item.writer}</span>
                                     <span className={ styles.logTime }>{getToday(item.logTime)}</span>
                                     <span className={ styles.hit }>{item.hit}</span>
                                 </div>
-                            )
+                            )    
                         }
                     </div>
                 </div>
@@ -60,4 +60,4 @@ const BoardList3 = ({onBoardPg, onBoardSeq}) => {
     );
 };
 
-export default BoardList3;
+export default BoardList4;

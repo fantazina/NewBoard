@@ -6,7 +6,10 @@ const BoardView2 = ({onBoardPg, boardSeq}) => {
     const[boardDTO, setBoardDTO] = useState({
         title : '',
         writer : '',
+        logTime : '',
+        hit : '',
         content : ''
+
     })
 
     useEffect(() => {
@@ -14,7 +17,7 @@ const BoardView2 = ({onBoardPg, boardSeq}) => {
              .then( res => {
                 setBoardDTO(res.data)
              })
-    },[])
+    },[boardSeq])
 
     const onEditClick = () => {
         const confirmation = window.prompt('수정하려면 비밀번호 ~ : ')
@@ -31,11 +34,10 @@ const BoardView2 = ({onBoardPg, boardSeq}) => {
         
         if(confirmation === boardDTO.password) {
             axios.delete(`http://localhost:8080/board/delete/${boardSeq}`)
-                 .then(res => {
-                    setBoardDTO(res.data)
-
+                 .then(() => {
                     alert('삭제 완료')
                     onBoardPg(0)
+                    
                  }).catch(error => alert(error))
 
         } else {

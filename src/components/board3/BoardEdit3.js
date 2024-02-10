@@ -2,41 +2,40 @@ import React, { useEffect, useState } from 'react';
 import Wstyles from '../../css/BoardWrite.module.css';
 import axios from 'axios';
 
-const BoardEdit2 = ({onBoardPg, boardSeq}) => {
-
+const BoardEdit3 = ({ onBoardPg, boardSeq }) => {
     const[boardDTO, setBoardDTO] = useState({
         title : '',
         writer : '',
+        password : '',
         content : ''
+        
     })
 
     useEffect(() => {
         axios.get(`http://localhost:8080/board/getUp/${boardSeq}`)
              .then(res => {
                 setBoardDTO(res.data)
-
              })
     },[boardSeq])
 
-    const onInput = (e) => {
-        const{name, value} = e.target
-        setBoardDTO({
-            ...boardDTO,
-            [name] : value
-
-        })
-    }    
-
     const onEditSubmit = () => {
-        const bdDTO = { ...boardDTO }
+        const bdDTO = boardDTO
+
         axios.put(`http://localhost:8080/board/update`, bdDTO)
              .then(() => {
-               alert('수정 완')
-               onBoardPg(2)
+                alert('수정 완 ~')
 
-             }).catch(error => alert(error))
+                onBoardPg(2)
+            }).catch(error => alert('error'))
     }
 
+    const onInput = (e) => {
+        const {name, value} = e.target
+            setBoardDTO({
+                ...boardDTO,
+                [name] : value
+            })
+    }
     return (
         <div className={ Wstyles.write_main }>
             <div className={ Wstyles.title_main }>      
@@ -45,6 +44,9 @@ const BoardEdit2 = ({onBoardPg, boardSeq}) => {
 
                 <p className={ Wstyles.writer }>작성자</p>
                 <input name='writer' value={ boardDTO.writer } onChange={ onInput }/>
+                
+                <p className={ Wstyles.writer }>비밀버노</p>
+                <input name='password' type='password' value={ boardDTO.password } onChange={ onInput }/>
             </div>
 
             <div className={ Wstyles.button_div }>
@@ -53,11 +55,11 @@ const BoardEdit2 = ({onBoardPg, boardSeq}) => {
 
             <div className={ Wstyles.contents}>
                 <div>
-                    <textarea name='content' value={ boardDTO.content }  onChange={ oninput } className={ Wstyles.textarea }></textarea>
+                    <textarea name='content' className={ Wstyles.textarea } value={ boardDTO.content }></textarea>
                 </div>
             </div>
         </div>
     );
 };
 
-export default BoardEdit2;
+export default BoardEdit3;

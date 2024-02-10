@@ -78,7 +78,7 @@ const BoardView2 = ({onBoardPg, boardSeq}) => {
                     </div>
                 </div>
             </div>
-    </div>        
+        </div>        
     );
 };
 

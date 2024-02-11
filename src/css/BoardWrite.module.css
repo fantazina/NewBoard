@@ -7,22 +7,33 @@
 }
 .title_main {
     display: inline-block;
+    width : 800px;
+    margin-top: 10px;
+}
+.title {
+    display: inline-block;
+    margin-left : 20px;
+}
+.title_main input {
+    margin-left : 10px;
 }
 .writer {
     display: inline-block;
+    margin-left : 20px;
 }
 .pwd {
     display: inline-block;
+    margin-left : 20px;
 }
 .button_div {
     display: inline-block;
 }
 .contents {
-    border : 1px solid blue;
+    /* border : 1px solid blue; */
     width : 890px;
     height : 620px;
 }
-.textarea {
+.contents textarea {
     width : 800px;
     height : 580px;
     margin-top : 20px;

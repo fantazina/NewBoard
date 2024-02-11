@@ -28,7 +28,7 @@
     text-align : center;
     margin : 50px;
 } 
-/*-------------수정삭제-------------*/
+/*-------------수정삭제뒤로-------------*/
 .up_button {
     text-align : right;
     width : 200px;
@@ -51,5 +51,20 @@
 .up_button button:hover {
     background-color : cadetblue;
     color : whitesmoke;
+}
+.back {
+    width : 200px;
+}
+.back button{
+    display : inline-block;
+    border : none;
+    width : 70px;
+    height : 30px;
+    background-color : whitesmoke;
+    border-radius : 8px !important;
+    cursor : pointer;
+    margin : 10px 0px 0 10px;
+    transition : 0.4s;
+    font-weight : bold;
 }
 /*--------------------------*/

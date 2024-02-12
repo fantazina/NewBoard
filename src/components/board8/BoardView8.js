@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Vstyles from '../../css/BoardView.module.css';
 import axios from 'axios';
 
-const BoardView7 = ({onBoardPg, boardSeq}) => {
+const BoardView8 = ({onBoardPg, boardSeq}) => {
     const[boardDTO, setBoardDTO] = useState({
         title : '',
         writer : '',
@@ -19,26 +19,24 @@ const BoardView7 = ({onBoardPg, boardSeq}) => {
     }, [])
 
     const onEditClick = () => {
-        const confirmation = window.prompt('수정하실 ?')
+        const confirmation = window.prompt('수정 기 ?')
         if(confirmation === boardDTO.password) {
             onBoardPg(3)
 
         } else {
-            alert('비밀번호 확인하슈')
+            alert('비번 ㄴ ')
         }
     }
-    
+
     const onDelClick = () => {
-        const confirmation = window.prompt('삭제하실 ?')
+        const confirmation = window.prompt('삭제 기 ?')
         if(confirmation === boardDTO.password) {
             axios.delete(`http://localhost:8080/board/delete/${boardSeq}`)
                  .then(() => {
-                    alert('삭제 완')
                     onBoardPg(0)
-
-                 }).catch(error => alert('error'))
+                 })
         } else {
-            alert('비밀번호 확인하슈')
+            alert('비번 ㄴ')
         }
     }
 
@@ -52,7 +50,7 @@ const BoardView7 = ({onBoardPg, boardSeq}) => {
         return `${month.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} 
         ${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     }
-    
+
     return (
         <div className={ Vstyles.view_container }>  
             <div className={ Vstyles.view_main }>
@@ -71,12 +69,12 @@ const BoardView7 = ({onBoardPg, boardSeq}) => {
 
                 <div className={ Vstyles.view_content }>
                     <div className={ Vstyles.view_text }>
-                        { boardDTO.content }
+                      	{ boardDTO.content }
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
     );
 };
 
-export default BoardView7;
+export default BoardView8;

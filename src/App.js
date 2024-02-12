@@ -6,6 +6,7 @@ import Board3 from './components/board3/Board3';
 import Board4 from './components/board4/Board4';
 import Board5 from './components/board5/Board5';
 import Board6 from './components/board6/Board6';
+import Board7 from './components/board7/Board7';
 
 const App = () => {
   return (
@@ -15,8 +16,9 @@ const App = () => {
       <Board2 /> 
       <Board3 />
       <Board4 />
-      <Board5 />*/}
-      <Board6 />
+      <Board5 />
+      <Board6 />*/}
+      <Board7 />
     </div>
   );
 };

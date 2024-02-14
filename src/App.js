@@ -10,6 +10,7 @@ import Board7 from './components/board7/Board7';
 import Board8 from './components/board8/Board8';
 import Board9 from './components/board9/Board9';
 import Board10 from './components/board10/Board10';
+import Board11 from './components/board11/Board11';
 
 const App = () => {
   return (
@@ -23,8 +24,9 @@ const App = () => {
       <Board6 />
       <Board7 />
       <Board8 />
-      <Board9 />*/}
-      <Board10 />
+      <Board9 />
+      <Board10 />*/}
+      <Board11 />
     </div>
   );
 };
